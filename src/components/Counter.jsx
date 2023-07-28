@@ -1,34 +1,27 @@
-import { connect } from "react-redux";
-import * as actions from '../actions'
-import { bindActionCreators } from "redux";
+import { connect, useSelector, useDispatch } from "react-redux";
+import { inc, dec, rnd } from '../actions'
 
-const Counter = ({ counter, inc, dec, rnd }) => {
+const Counter = () => {
+
+
+    // ХУК useSelector  отримуе значення на пряму зі STORE
+    const counter = useSelector(state => state.counter);
+
+    // ХУК useDispatch - акшен криейтер. 
+    const dispatch = useDispatch()
+
     return (
         <div className="wraper">
             <h1>{counter}</h1>
-            <button onClick={inc} className="btn">inc</button>
-            <button onClick={dec} className="btn">dec</button>
-            <button onClick={rnd} className="btn">rnd</button>
+            <button onClick={() => dispatch(inc())} className="btn">inc</button>
+            <button onClick={() => dispatch(dec())} className="btn">dec</button>
+            <button onClick={() => dispatch(rnd())} className="btn">rnd</button>
 
         </div>
     )
 }
 
-// Функція, яка повертає ПРОПСами, необхідні данні, з глобального СТЕЙТу
-const mapStateToProps = (state) => {
-    return {
-        counter: state.value
-    }
-}
 
-// // НЕ СКОРОЧЕНИЙ ВАРІАНТ
-// // Функція, яка стровює ДІЮ, і передає їх до СТЕЙТу
-// const mapDispatchToProps = (dispatch) => {
-//     return bindActionCreators(actions, dispatch)
+export default Counter;
 
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(Counter);
-
-
-// СКОРОЧЕНИЙ ВАРІАНТ (якщо actions - обʼєкт)
-export default connect(mapStateToProps, actions)(Counter);
+// git commit -m "useSelector useDispatch "
