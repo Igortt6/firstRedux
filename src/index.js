@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 
 
 // Стврорення СТОРЕ, з вбудованого REDUX
-const store = createStore(reducer);
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 // Деструктуризація вбудованих функція в STORE
 // dispatch(action) -  Это функция, которая позволяет отправлять "действия" (actions) в хранилище. Действие - это простой объект, который описывает, что произошло в вашем приложении. Когда действие отправляется с помощью dispatch, оно передается в редьюсеры (reducers), где обрабатывается и возвращается новое состояние.

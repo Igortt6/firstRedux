@@ -23,5 +23,3 @@ const Counter = () => {
 
 
 export default Counter;
-
-// git commit -m "useSelector useDispatch "
